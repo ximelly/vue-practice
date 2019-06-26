@@ -3,7 +3,13 @@
     <input type="text" v-model="input_message">
     <button @click="handerAdd">add</button>
     <ul>
-      <list-item v-for="(item,index) in list" v-bind:key="index" :name="item" :index="index" v-on:delItem="handlerDel"></list-item>
+      <list-item 
+          v-for="(item,index) in list" 
+          v-bind:key="index" 
+          :name="item" 
+          :index="index" 
+          v-on:delItem="handlerDel"><!-- 监听子组件出发的delItem事件 -->
+      </list-item>
     </ul>
   </div>
 </template>
@@ -13,7 +19,7 @@
 
   export default {
     name: 'app',
-    components:{//要使用的组件
+    components:{//要使用的子组件
       "list-item":todoitem
     },
     data:function(){
