@@ -1,0 +1,39 @@
+<template>
+  <div id="app">
+    <input type="text" v-model="input_message">
+    <button @click="handerAdd">add</button>
+    <ul>
+      <list-item v-for="(item,index) in list" v-bind:key="index" :name="item" :index="index" v-on:delItem="handlerDel"></list-item>
+    </ul>
+  </div>
+</template>
+
+<script>
+  import todoitem from './components/list-item.vue'
+
+  export default {
+    name: 'app',
+    components:{//要使用的组件
+      "list-item":todoitem
+    },
+    data:function(){
+      return {
+        list:[],
+        input_message:""
+      }
+    },
+    methods: {
+      handerAdd(){
+        this.list.push(this.input_message);
+        this.input_message="";
+      },
+      handlerDel(index){
+        this.list.splice(index,1);
+      }
+    },
+  }
+</script>
+
+<style>
+
+</style>
