@@ -1,5 +1,5 @@
 <template>
-  <div class="item" v-on:click="clickItem">{{name}}</div>
+  <div class="m10"><el-tag closable :type="success" @close="clickItem()">{{name}}</el-tag></div>
 </template>
 
 <script>
@@ -19,7 +19,7 @@
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-  .item{
-    color:#ff0000;
+  .m10{
+    margin:10px 0;
   }
 </style>

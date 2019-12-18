@@ -1,16 +1,15 @@
 <template>
   <div id="app">
-    <input type="text" v-model="input_message">
-    <button @click="handerAdd">add</button>
-    <ul>
-      <list-item 
+    <el-input type="text" v-model="input_message">
+      <el-button slot="append" icon="el-icon-plus" @click="handerAdd"></el-button>
+    </el-input>
+    <list-item 
           v-for="(item,index) in list" 
           v-bind:key="index" 
           :name="item" 
           :index="index" 
           v-on:delItem="handlerDel"><!-- 监听子组件出发的delItem事件 -->
       </list-item>
-    </ul>
   </div>
 </template>
 
