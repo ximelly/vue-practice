@@ -1,5 +1,5 @@
 <template>
-  <div class="m10"><el-tag closable :type="success" @close="clickItem()">{{name}}</el-tag></div>
+  <div class="m10"><el-tag closable type="success" @close="clickItem()">{{name}}</el-tag></div>
 </template>
 
 <script>

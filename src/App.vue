@@ -31,9 +31,11 @@
       handerAdd(){
         this.list.push(this.input_message);
         this.input_message="";
+        this.$message.success("添加成功");
       },
       handlerDel(index){
         this.list.splice(index,1);
+        this.$message.success("删除成功");
       }
     },
   }
