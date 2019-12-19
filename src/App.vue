@@ -44,7 +44,9 @@
         <el-form-item>
           <el-button type="primary" @click="onSubmit">立即创建</el-button>
           <el-button type="primary" @click="addRule">添加校验规则</el-button>
-          <el-button type="primary" @click="editStatus">修改自定义错误</el-button>
+          <el-button data-status="1" type="danger" @click="editStatus('error')">自定义错误error</el-button>
+          <el-button data-status="2" type="success" @click="editStatus('success')">自定义错误success</el-button>
+          <el-button data-status="3" type="warning" @click="editStatus('validating')">自定义错误validating</el-button>
         </el-form-item>
       </el-form>
   </div>
@@ -112,8 +114,8 @@
         this.rules=Object.assign({},this.rules,{des:desRules});
         console.log(this.rules);
       },
-      editStatus(){
-        this.status="success";
+      editStatus(type){
+        this.status=type;
       }
     },
   }
