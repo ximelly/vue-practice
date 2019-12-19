@@ -16,17 +16,35 @@
         inline:el-form-item作为行内元素，多个展示在一行
         rules:表单校验规则  prop属性进行绑定
         validate-om-rule-change  当rules改变时是否立即做校验，默认为true
+        status-icon 校验结果对应图标
       -->
-      <el-form ref="form" :model="form" label-width="100px" :rules="rules" :validate-on-rule-change="false">
+      <el-form ref="form" 
+        :model="form" 
+        label-width="100px"
+        :rules="rules"
+        :validate-on-rule-change="false"
+        status-icon>
         <el-form-item label="活动名称" prop="name">
           <el-input v-model="form.name"></el-input>
         </el-form-item>
         <el-form-item label="活动名地点" prop="des">
           <el-input v-model="form.des"></el-input>
         </el-form-item>
+        <!-- 
+          绑定自定义校验规则  :validate-status="status" :error="error"
+          validate-status
+            success 验证成功
+            error 验证失败
+            validating 验证中
+          error 自定义错误提示
+         -->
+        <el-form-item label="自定义错误" prop="age" :validate-status="status" :error="error">
+          <el-input v-model="form.age"></el-input>
+        </el-form-item>
         <el-form-item>
           <el-button type="primary" @click="onSubmit">立即创建</el-button>
           <el-button type="primary" @click="addRule">添加校验规则</el-button>
+          <el-button type="primary" @click="editStatus">修改自定义错误</el-button>
         </el-form-item>
       </el-form>
   </div>
@@ -48,9 +66,12 @@
       return {
         list:[],
         input_message:"",
+        status:"error",
+        error:"自定义错误",
         form: {
           name: '',
-          des: ''
+          des: '',
+          age:""
         },
         rules:{
           name:[
@@ -90,6 +111,9 @@
         ]
         this.rules=Object.assign({},this.rules,{des:desRules});
         console.log(this.rules);
+      },
+      editStatus(){
+        this.status="success";
       }
     },
   }
