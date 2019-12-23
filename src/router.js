@@ -7,6 +7,7 @@ const routes = [
     { path: '/form', component: () => import('./views/form.vue'),meta:{title:'form'}},
     { path: '/list', component:  () => import('./views/toDoList.vue'),meta:{title:'list'}},
     { path: '/lifeCycle', component:  () => import('./views/lifeCycle.vue'),meta:{title:'lifeCycle'}},
+    { path: '/addRouters', component:  () => import('./views/addRouters.vue'),meta:{title:'addRouters'}},
     {
         path: '/nofound',
         name: 'nofound',
