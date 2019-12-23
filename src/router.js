@@ -4,9 +4,9 @@ import Router from 'vue-router'
 Vue.use(Router);
 
 const routes = [
-    { path: '/form', component: () => import('./views/form.vue')},
-    { path: '/list', component:  () => import('./views/toDoList.vue') },
-    { path: '/lifeCycle', component:  () => import('./views/lifeCycle.vue') },
+    { path: '/form', component: () => import('./views/form.vue'),meta:{title:'form'}},
+    { path: '/list', component:  () => import('./views/toDoList.vue'),meta:{title:'list'}},
+    { path: '/lifeCycle', component:  () => import('./views/lifeCycle.vue'),meta:{title:'lifeCycle'}},
     {
         path: '/nofound',
         name: 'nofound',
@@ -23,10 +23,28 @@ const router = new Router({
     routes
 })
 
- /* eslint-disable */
+/* eslint-disable */
+//修改title方法二：
+// Vue.mixin({
+//   beforeCreate(){
+//     //this.$route :当前路由  this.$router :整个路由对象
+//     if(this.$route.meta.title){
+//       document.title=this.$route.meta.title;
+//     }else{
+//       document.title="vue-practice";
+//     }
+//   }
+// })
+
  //全局守卫
  router.beforeEach((to, from, next) => {
   console.log('全局守卫：beforeEach', to.path, from.path);
+  //修改title方法二：
+  if(to.meta.title){
+    document.title=to.meta.title;
+  }else{
+    document.title="vue-practice";
+  }
   next();
 })
 
