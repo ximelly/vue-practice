@@ -26,17 +26,17 @@ const router = new Router({
  /* eslint-disable */
  //全局守卫
  router.beforeEach((to, from, next) => {
-  console.log('beforeEach', to.path, from.path);
+  console.log('全局守卫：beforeEach', to.path, from.path);
   next();
 })
 
 router.beforeResolve((to, from, next) => {
-  console.log('beforeResolve', to.path, from.path);
+  console.log('全局守卫：beforeResolve', to.path, from.path);
   next();
 })
 
 router.afterEach((to, from) => {
-  console.log('afterEach', to.path, from.path);
+  console.log('全局守卫：afterEach', to.path, from.path);
 })
 
 
