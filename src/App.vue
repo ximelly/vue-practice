@@ -13,17 +13,28 @@
       
       <!-- 
         label-width:label的宽度
+        label-position label展示的位置  top||left
         inline:el-form-item作为行内元素，多个展示在一行
         rules:表单校验规则  prop属性进行绑定
         validate-om-rule-change  当rules改变时是否立即做校验，默认为true
         status-icon 校验结果对应图标
+        label-suffix label的后缀
+        hide-required-asterisk  是否隐藏required图标
+        disabled 禁用所有表单
+        size 表单大小
+        实现原理：属性通过provide inject传给input组件进行处理
       -->
       <el-form ref="form" 
         :model="form" 
         label-width="100px"
+        label-position="top"
+        label-suffix=":"
         :rules="rules"
         :validate-on-rule-change="false"
-        status-icon>
+        status-icon
+        :disabled="false"
+        size="small"
+        :hide-required-asterisk="false">
         <el-form-item label="活动名称" prop="name">
           <el-input v-model="form.name"></el-input>
         </el-form-item>
@@ -49,6 +60,7 @@
           <el-button data-status="3" type="warning" @click="editStatus('validating')">校验中</el-button>
         </el-form-item>
       </el-form>
+      <div>{{$store.state.data}}</div>
   </div>
 </template>
 
@@ -118,6 +130,8 @@
         this.status=type;
         if(type=="error"){
           this.error="自定义错误";
+        }else{
+          this.error="";
         }
       }
     },
