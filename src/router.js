@@ -6,6 +6,7 @@ Vue.use(Router);
 const routes = [
     { path: '/form', component: () => import('./views/form.vue')},
     { path: '/list', component:  () => import('./views/toDoList.vue') },
+    { path: '/lifeCycle', component:  () => import('./views/lifeCycle.vue') },
     {
         path: '/nofound',
         name: 'nofound',
@@ -21,4 +22,22 @@ const routes = [
 const router = new Router({
     routes
 })
+
+ /* eslint-disable */
+ //全局守卫
+ router.beforeEach((to, from, next) => {
+  console.log('beforeEach', to.path, from.path);
+  next();
+})
+
+router.beforeResolve((to, from, next) => {
+  console.log('beforeResolve', to.path, from.path);
+  next();
+})
+
+router.afterEach((to, from) => {
+  console.log('afterEach', to.path, from.path);
+})
+
+
 export default router;

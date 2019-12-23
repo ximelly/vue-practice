@@ -6,7 +6,7 @@
       <div>name:{{$store.state.name}}</div>
     </div>
     <div>not found</div>
-    <el-button icon="el-icon-update" @click="update">更新vuex数据</el-button>
+    <el-button icon="el-icon-refresh" @click="update">更新vuex数据</el-button>
   </div>
 </template>
 
