@@ -1,6 +1,10 @@
 <template>
   <div>
-    <div>vuex：{{$store.state.data}}</div>
+    <div class="vuex">
+      <h3>vuex</h3>
+      <div>data:{{$store.state.data}}</div>
+      <div>name:{{$store.state.name}}</div>
+    </div>
     <!-- 
       label-width:label的宽度
       label-position label展示的位置  top||left

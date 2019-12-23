@@ -1,6 +1,10 @@
 <template>
   <div>
-    <div>vuex：{{$store.state.data}}</div>
+    <div class="vuex">
+      <h3>vuex</h3>
+      <div>data:{{$store.state.data}}</div>
+      <div>name:{{$store.state.name}}</div>
+    </div>
     <el-input type="text" v-model="input_message">
       <el-button slot="append" icon="el-icon-plus" @click="handerAdd"></el-button>
     </el-input>
